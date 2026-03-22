@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+
+<body>
+	
+</body>
+
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reel Downloader</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 50px; background: #f4f4f4; }
+        input { width: 80%; padding: 12px; margin-bottom: 20px; border-radius: 5px; border: 1px solid #ddd; }
+        button { padding: 12px 25px; background: #e1306c; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h2>Instagram Reel Downloader</h2>
+    <input type="text" id="url" placeholder="Paste Reel Link Here...">
+    <br>
+    <button onclick="download()">Download Now</button>
+    <p id="msg"></p>
+
+    <script>
+        async function download() {
+            const url = document.getElementById('url').value;
+            const msg = document.getElementById('msg');
+            msg.innerText = "Processing...";
+            
+            try {
+                const res = await fetch('https://YOUR-BACKEND-URL.vercel.app/download', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({url: url})
+                });
+                const data = await res.json();
+                if(data.download_url) {
+                    msg.innerHTML = `<a href="${data.download_url}" target="_blank">Download Link Taiyar Hai!</a>`;
+                } else { msg.innerText = "Error aa gaya!"; }
+            } catch(e) { msg.innerText = "Backend connect nahi hua!"; }
+        }
+    </script>
+</body>
+</html>
