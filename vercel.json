@@ -1,6 +1,0 @@
-{
-  "rewrites": [
-    { "source": "/download", "destination": "main.py" },
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
-}
