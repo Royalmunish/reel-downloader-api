@@ -1,15 +1,6 @@
 {
   "rewrites": [
     { "source": "/download", "destination": "main.py" },
-    { "source": "/", "destination": "index.html" },
-    { "source": "/index.html", "destination": "index.html" }
-  ]
-}
-{
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "main.py"
-    }
+    { "source": "/(.*)", "destination": "/$1" }
   ]
 }
